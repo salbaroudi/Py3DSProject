@@ -38,4 +38,4 @@ And you are ready to go.
 A more detailed explanation for this setup is detailed [here][link2]
 
 [link1]: https://stackoverflow.com/questions/115983/how-can-i-add-an-empty-directory-to-a-git-repository
-[link2]: https://www.cumulativeparadigms.com/wordpress
+[link2]: https://cumulativeparadigms.com/wordpress
