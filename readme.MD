@@ -5,12 +5,19 @@ This is a simple project directory specifically designed for small to mid-level 
 It is structured as follows:
 
 /PROJECTNAME:
+
 |---/env: this folder contains a venv environment for sandboxed development.
+
 |---/test: pytest scripts live here.
+
 |---/code:
+
 |------/classes: put Object Classes here, all in one place.
+
 |------/source: the main code for the project is stored here.
+
 |---requirements.txt: used with pip3 to install Development and Data Science Libraries Quickly.
+
 |---readme.MD: you are reading this file right now.  
 
 
