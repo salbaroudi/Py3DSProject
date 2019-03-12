@@ -21,7 +21,7 @@ It is structured as follows:
 |---readme.MD: you are reading this file right now.  
 
 
-Note: The directories are supposed to be empty, but [git won't keep them around][link1]. A hidden _.keep_ file
+**Note:** The directories are supposed to be empty, but [git won't keep them around][link1]. A hidden _.keep_ file
 is put in every directory at risk of being ignored. Just delete these files after cloning. 
 
  
@@ -38,4 +38,4 @@ And you are ready to go.
 A more detailed explanation for this setup is detailed [here][link2]
 
 [link1]: https://stackoverflow.com/questions/115983/how-can-i-add-an-empty-directory-to-a-git-repository
-[link2]: https://cumulativeparadigms.com/wordpress
+[link2]: https://www.cumulativeparadigms.com/wordpress
