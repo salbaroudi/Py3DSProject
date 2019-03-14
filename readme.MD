@@ -1,12 +1,10 @@
 ### About this Project:
 
-This is a simple project directory specifically designed for small to mid-level projects using python3.3+
+This is a simple project directory specifically designed for small to mid-level projects using python3.
 
 It is structured as follows:
 
 /PROJECTNAME:
-
-|---/env: this folder contains a venv environment for sandboxed development.
 
 |---/test: pytest scripts live here.
 
@@ -20,11 +18,14 @@ It is structured as follows:
 
 |---readme.MD: you are reading this file right now.  
 
+|---.gitignore: OS directory files, and the /env folder are ignored.
+
+Out of personal preference, I keep my venv /env folder at the top of the project directory. The .gitigonre file contains
+a glob pattern to ignore this folder.
 
 **Note:** The directories are supposed to be empty, but [git won't keep them around][link1]. A hidden _.keep_ file
 is put in every directory at risk of being ignored. Just delete these files after cloning. 
 
- 
 To do sandboxed python3 devleopment (with venv), do the following:
 
 1. Clone this directory.
@@ -35,7 +36,7 @@ To do sandboxed python3 devleopment (with venv), do the following:
 
 And you are ready to go. 
 
-A more detailed explanation for this setup is detailed [here][link2]
+A more detailed explanation for this setup is [here][link2]
 
 [link1]: https://stackoverflow.com/questions/115983/how-can-i-add-an-empty-directory-to-a-git-repository
-[link2]: https://www.cumulativeparadigms.com/wordpress
+[link2]: http://www.cumulativeparadigms.org/wordpress/index.php/2019/03/13/building-a-simple-python-environment-for-data-science-and-development/
