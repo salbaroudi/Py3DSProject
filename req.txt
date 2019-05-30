@@ -10,3 +10,8 @@ jupyter
 altair
 pytest
 hypothesis
+statsmodels
+vega
+sklearn
+statsmodels
+

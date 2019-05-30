@@ -8,17 +8,26 @@ It is structured as follows:
 
 |---/test: pytest scripts live here.
 
+|---/notebooks: put jupyter notebooks here.
+
+|---/web:
+
+|------/{css,js,img,index.html}: webpage directories.
+
 |---/code:
 
-|------/classes: put Object Classes here, all in one place.
+|------/classes: put object classes here, all in one place.
 
-|------/source: the main code for the project is stored here.
+|------/mods: Commonly used script code put here. 
 
 |---requirements.txt: used with pip3 to install Development and Data Science Libraries Quickly.
 
 |---readme.MD: you are reading this file right now.  
 
 |---.gitignore: OS directory files, and the /env folder are ignored.
+
+In addition to a test directory, and a jupyter notebook directory, I also add a make file and a small web-directory for a http.server instance.
+This allows the user to quickly demonstrate their project online. Inspiration for this comes from [this project][link3].
 
 Out of personal preference, I keep my venv /env folder at the top of the project directory. The .gitigonre file contains
 a glob pattern to ignore this folder.
@@ -40,3 +49,4 @@ A more detailed explanation for this setup is [here][link2]
 
 [link1]: https://stackoverflow.com/questions/115983/how-can-i-add-an-empty-directory-to-a-git-repository
 [link2]: http://www.cumulativeparadigms.org/wordpress/index.php/2019/03/13/building-a-simple-python-environment-for-data-science-and-development/
+[link3]: https://github.com/tdhopper/pythonplot.com
