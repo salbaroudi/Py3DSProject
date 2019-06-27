@@ -14,3 +14,4 @@ statsmodels
 vega
 sklearn
 statsmodels
+dask[complete]
