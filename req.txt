@@ -15,3 +15,5 @@ vega
 sklearn
 statsmodels
 dask[complete]
+Flask
+graphviz
