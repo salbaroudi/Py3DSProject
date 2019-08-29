@@ -18,3 +18,5 @@ dask[complete]
 Flask
 graphviz
 MLxtend
+xlrd
+pyvis
