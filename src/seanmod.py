@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import altair as alt
 from datetime import datetime
 from datetime import timedelta
+import os
 
 
 #Settings
@@ -20,8 +21,10 @@ pd.set_option('display.max_columns', 40)
 pd.set_option('display.width', 1000)
 
 
-#support functions:
+#BoxplotBlast Code:
+###-------------------
 
+#support functions:
 #Signature: DataFrame, String -> DataFrame
 #Purpose: Analyse a given numerical series. Construct a pseudo dataframe that mimics Q1,Q2,Q3 from series.
 #add additional outlier/point information for Altair to interpret (in the prod_chart) method.
@@ -118,6 +121,74 @@ def boxplotblast(df):
     
     return finalChart
 
+###----------------------
+### Timeline Visualization Code:
+
+#Signature: DataFrame, String -> Altair Chart
+#Purpose: Give a Dataframe, and a timestamp column. A heatmap will be produced.
+#Note: Assumes the Timestamp() object column is in string form (fresh read from a csv or file).
+#Pandas 0.25 should read these automatically when loading CSVs
+#Do not pass datetime columns!
+
+def dayheatmap(timeDF,tcol):
+    if tcol not in timeDF.columns:
+        raise ValueError("ERROR: time column given is not in DataFrame!")
+    if not isinstance(timeDF[tcol].iloc[1],str):
+        raise ValueError("ERROR: time column is not of type string!")
+    if (timeDF.shape[0] < 1):
+        raise ValueError("ERROR: Dataframe is empty (zero rows).")
+    
+    timeDF = timeDF.applymap(pd.Timestamp)
+    #Conversion for
+    timeDF["invoicedate"] = timeDF["invoicedate"].apply(lambda x: str(x.year) + "-" + str(x.month) + "-" + str(x.day))
+    timeDF["mark"] = 1
+
+    timeGroup = timeDF[["invoicedate","mark"]].groupby("invoicedate",as_index=False).count()
+    
+    heatChart = alt.Chart(timeGroup).mark_rect().encode(
+      alt.X("yearmonth(invoicedate):O"),
+      alt.Y("date(invoicedate):O"),
+      alt.Color("mark"))
+
+    return heatChart
+
+###---------------------
+
+
+###----------------------------
+### HeadTailCSV Code:
+
+#Signature: String, Integer -> NoneType
+#Purpose: Grab every csv dataframe in a directory, and give a summary output of it for user.
+#Defaults: Path=PWD, n=5. n specifies how many rows in the head/tail/body sections to sample.
+def headtailcsvs(path=".",n=5):
+    if not isinstance(path,str):
+        raise ValueError("ERROR: path is not a string.")
+    if not int(n) == n or n < 1:
+        raise ValueError("ERROR: n is not an integer or < 1.")
+    if (not os.path.exists(path)):
+        raise ValueError("ERROR: path does not exist.")
+    if (path[-1:] == "/" ): #I assume no trailing slash. If user added it, remove.
+        path = path[:len(path) - 1]
+     
+    dirList = os.listdir(path)
+    #Not efficient, but does the job. ¯\_(ツ)_/¯ Do FunProg tricks later.
+    keepList = []
+    for item in dirList:
+        if item[-3:] == "csv":
+            keepList.append(item)
+    
+    for item in keepList:
+        currDF = pd.read_csv(path + "/" + item)
+        if (currDF.shape[0] < 3*n):
+            raise ValueError("ERROR: Can't sample csv file: " + item +". Rows < 3*n.")
+        
+        rowLen = currDF.shape[0]
+        frames = [currDF.head(n),currDF.iloc[n:(rowLen - n)].sample(n).sort_index(axis=0),currDF.tail(n)]
+        display(item)
+        display(pd.concat(frames))
+            
+    return None
 
 
 

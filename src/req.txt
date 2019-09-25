@@ -16,6 +16,8 @@ sklearn
 statsmodels
 dask[complete]
 Flask
+flask-wtf
+python-dotenv
 graphviz
 MLxtend
 xlrd
