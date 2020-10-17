@@ -13,7 +13,7 @@ import os
 #Settings
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
-alt.renderers.enable('notebook')
+alt.renderers.enable('default')
 alt.data_transformers.enable('default', max_rows=None)
 #%matplotlib inline 
 pd.set_option('display.max_rows', 100)
