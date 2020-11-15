@@ -24,3 +24,4 @@ MLxtend
 xlrd
 pyvis
 cite2c
+grip
