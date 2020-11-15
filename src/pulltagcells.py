@@ -19,14 +19,11 @@ for cell in cells:
     if cell['metadata'].get('tags') is not None: #cell['metadata'].get('tags') != {}:
         newCellList.append(cell)
         
-
-outerSet = {
- "cells": [
- ],
+outerSet = {"cells": [],
  "metadata": {
   "kernelspec": {
    "display_name": "Python 3",
-   "language": "python",1. 
+   "language": "python",
    "name": "python3"
   },
   "language_info": {
